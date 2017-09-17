@@ -1,0 +1,53 @@
+.btn-primary {
+  margin-left: : 1em;
+  margin-top: 1em;
+  background-color: #A9ABAE;
+}
+.corpo{
+  background-color: #C8C5E3;
+}
+.principal{
+  height: 80%;
+}
+.obtuario{
+  background-color: #0C9BDC;
+  color: white;
+}
+.text-left{
+  position:relative;
+  margin-left: 3%;
+  margin-top: 3%;
+  width: 35%;
+  height: 100%;
+  height: 40em;
+  background: #FEFEFE;
+  padding: 20px;
+  box-shadow: 1px 1px 40px rgb(0, 0, 0);
+  text-align: center;
+  float: left;
+}
+.text-right{
+  position:relative;
+  margin-left: 5%;
+  margin-right: 3%;
+  margin-top: 3%;
+  width: 54%;
+  height: 40em;
+  background: #FEFEFE;
+  padding: 20px;
+  box-shadow: 1px 1px 40px rgb(0, 0, 0);
+  text-align: center;
+  float: left;
+}
+.btn-success{
+  background-color: #A9ABAE;
+}
+.numeros{
+  color: black;
+}
+.check{
+  font-size: 14px;
+}
+.table{
+  margin-top: 3%;
+}
