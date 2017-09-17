@@ -12,6 +12,10 @@
 .obtuario{
   background-color: #0C9BDC;
   color: white;
+  border-width:20px 0px 0px 0px;
+  border-style:solid solid solid solid;
+  border-color:#000000 #2eb9ce #2eb9ce #2eb9ce;
+  box-shadow: 1px 1px 40px rgb(0, 0, 0);
 }
 .text-left{
   position:relative;
@@ -50,4 +54,14 @@
 }
 .table{
   margin-top: 3%;
+}
+#portifolio{
+  margin-top: 0px;
+  height: 70px;
+  float: left;
+}
+#titulo{
+  margin-top: 0px;
+  height: 70px;
+  margin-left: 40%;
 }
