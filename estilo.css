@@ -12,30 +12,29 @@
 .obtuario{
   background-color: #0C9BDC;
   color: white;
-  border-width:20px 0px 0px 0px;
+  border-width:10px 0px 0px 0px;
   border-style:solid solid solid solid;
-  border-color:#000000 #2eb9ce #2eb9ce #2eb9ce;
+  border-color:#0b6f9c #2eb9ce #2eb9ce #2eb9ce;
   box-shadow: 1px 1px 40px rgb(0, 0, 0);
 }
 .text-left{
   position:relative;
-  margin-left: 3%;
-  margin-top: 3%;
-  width: 35%;
-  height: 100%;
-  height: 40em;
+  margin-left: 2%;
+  margin-top: 1%;
+  width: 40%;
+  height: 44em;
   background: #FEFEFE;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 1px 1px 40px rgb(0, 0, 0);
   text-align: center;
   float: left;
 }
 .text-right{
   position:relative;
-  margin-left: 5%;
+  margin-left: 3%;
   margin-right: 3%;
   margin-top: 3%;
-  width: 54%;
+  width: 50%;
   height: 40em;
   background: #FEFEFE;
   padding: 20px;
@@ -64,4 +63,21 @@
   margin-top: 0px;
   height: 70px;
   margin-left: 40%;
+}
+.tabelaPopulacao{
+  width: 45%;
+  float: left;
+}
+.tabelaAmostra{
+  width: 45%;
+  float: right;
+}
+#tituloDadosBrutos{
+  margin-top: 0px;
+}
+#tabelaRol{
+  margin: 0px;
+}
+#divsVariancia .table{
+  margin: 0px
 }

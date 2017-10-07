@@ -17,7 +17,7 @@
   <div class="principal">
     <div class="text-left">
       <form id="form1">
-        <h1>Calculadora</h1>
+        <h1 id="tituloDadosBrutos">Dados Brutos ou rol</h1>
         <div>
             <input class="numeros" required type="text" required autofocus name="numero" id="numero" onkeypress="return runScript(event)">
             <button class="btn btn-success" type="reset" name="button" onclick="inclui()">Incluir</button>
@@ -28,33 +28,67 @@
               <p id="demo"></p>
             </label>
         </div>
-        <div class="check">
-          <h3>Tipo de Média</h3>
-          <label>
-              <input checked type="radio" name="calc" id="aritimetica">
-              Média Aritimetica
-            </label>
-          <label>
-              <input type="radio" name="calc" id="ponderada">
-              Média Ponderada
-            </label>
-          <label>
-              <input type="radio" name="calc" id="mediana">
-              Mediana
-            </label>
-          <label>
-              <input type="radio" name="calc" id="moda">
-              Moda
-            </label>
-        </div>
         <div>
-          <label>
               <button class="btn btn-primary" type="button" name="calc" onclick="calcula()">Calcular</button>
               <h3>Resultado</h3>
-              <input class="numeros" type="text" name="result" id="result">
-              <br>
+              <table class="table" id="tabelaRol">
+                <thead>
+                  <tr>
+                    <th>Media Aritimetica</th>
+                    <th>Media Ponderada</th>
+                    <th>Mediana</th>
+                    <th>Moda</th>
+                    <th>Desvio Medio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="aritimetica"></td>
+                    <td id="ponderada"></td>
+                    <td id="mediana"></td>
+                    <td id="moda"></td>
+                    <td id="desvioMedio"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div id="divsVariancia">
+                <h4>Variancia e Desvio Padrão</h4>
+                <div class="tabelaPopulacao">
+                  <h6>Populçao</h6>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Variancia</th>
+                        <th>Desvio Padrão</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td id="popVariancia"></td>
+                        <td id="popDesvioPadra"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tabelaAmostra">
+                  <h6>Amostra</h6>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Variancia</th>
+                        <th>Desvio Padrão</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td id="amostVariancia"></td>
+                        <td id="amostDesvioPadra"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
               <button class="btn btn-primary" type="button" name="button" onclick="zerar()">Resetar</button>
-            </label>
         </div>
       </form>
     </div>
