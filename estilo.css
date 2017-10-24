@@ -22,7 +22,8 @@
   margin-left: 2%;
   margin-top: 1%;
   width: 40%;
-  height: 44em;
+  height: 40em;
+  overflow-x: auto;
   background: #FEFEFE;
   padding: 10px;
   box-shadow: 1px 1px 40px rgb(0, 0, 0);
@@ -33,9 +34,10 @@
   position:relative;
   margin-left: 3%;
   margin-right: 3%;
-  margin-top: 3%;
+  margin-top: 1%;
   width: 50%;
   height: 40em;
+  overflow-x: auto;
   background: #FEFEFE;
   padding: 20px;
   box-shadow: 1px 1px 40px rgb(0, 0, 0);

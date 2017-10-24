@@ -9,12 +9,17 @@ function desativaInput(obj) {
 var totalFrequencia = 0;
 var totalValores = 0;
 
+var frequenciaPricipal = []
+var inicioIntervaloPricipal = []
+var fimIntervaloPricipal = []
+
 function montaTabela() {
   var podeSeguir = validaFormulario();
 
   if (podeSeguir) {
     var temIntervalo = false;
     var temp = document.getElementById("inicioIntervalo").value;
+    inicioIntervaloPricipal.push(temp)
     if (temp !== "") {
       var inicioInterval = parseInt(temp);
       temIntervalo= true;
@@ -22,6 +27,9 @@ function montaTabela() {
 
     var fimIntervalo = parseInt(document.getElementById("fimIntervalo").value);
     var frequencia = parseInt(document.getElementById("frequencia").value);
+    frequenciaPricipal.push(frequencia)
+    fimIntervaloPricipal.push(fimIntervalo)
+
     var media = 0;
 
     if (temIntervalo) {
@@ -87,7 +95,132 @@ function montaTd(dado) {
 
 function mostraResultado() {
   var totalMedia = totalValores / totalFrequencia;
-  document.getElementById("resultado").value = totalMedia;
+  document.getElementById("aritimetica2").innerHTML = totalMedia;
+  calcModa()
+  calcDesvioSimples()
+  calcVariancia()
+}
+
+function calcVariancia() {
+  var intervalo = document.getElementById("incluiIntervalo")
+  var totalDeFrequencia = 0
+  var totalXI = 0
+  if (!intervalo) {
+    for (var i = 0; i < frequenciaPricipal.length; i++) {
+      totalDeFrequencia += frequenciaPricipal[i]
+      totalXI += ((fimIntervaloPricipal[i] + parseFloat(inicioIntervaloPricipal[i])) / 2) * frequenciaPricipal[i] ;
+    }
+    var media = totalXI / totalDeFrequencia
+    var tempResult = 0
+    for (var i = 0; i < frequenciaPricipal.length; i++) {
+      var xi = (fimIntervaloPricipal[i] + parseFloat(inicioIntervaloPricipal[i])) / 2;
+      console.log(xi);
+      var modulo = Math.pow(xi - media, 2) * frequenciaPricipal[i]
+      tempResult += modulo
+    }
+    var resultadoPop = tempResult / totalDeFrequencia
+    document.getElementById("popVariancia2").innerHTML = resultadoPop;
+    var raizPop = Math.sqrt(resultadoPop)
+    document.getElementById("popDesvioPadra2").innerHTML = raizPop;
+
+    var resultadoAmst = tempResult / (totalDeFrequencia - 1)
+    document.getElementById("amostVariancia2").innerHTML = resultadoAmst;
+    var raisAmost = Math.sqrt(resultadoAmst)
+    document.getElementById("amostDesvioPadra2").innerHTML = raisAmost;
+  } else {
+    console.log(fimIntervaloPricipal);
+    for (var i = 0; i < frequenciaPricipal.length; i++) {
+      totalDeFrequencia += frequenciaPricipal[i]
+      totalXI += parseFloat(fimIntervaloPricipal[i]) * frequenciaPricipal[i] ;
+    }
+    var media = totalXI / totalDeFrequencia
+    var tempResult = 0
+    for (var i = 0; i < frequenciaPricipal.length; i++) {
+      var xi = parseFloat(fimIntervaloPricipal[i])
+      var modulo = Math.pow(xi - media, 2) * frequenciaPricipal[i]
+      tempResult += modulo
+    }
+    var resultadoPop = tempResult / totalDeFrequencia
+    document.getElementById("popVariancia2").innerHTML = resultadoPop;
+    var raizPop = Math.sqrt(resultadoPop)
+    document.getElementById("popDesvioPadra2").innerHTML = raizPop;
+
+    var resultadoAmst = tempResult / (totalDeFrequencia - 1)
+    document.getElementById("amostVariancia2").innerHTML = resultadoAmst;
+    var raisAmost = Math.sqrt(resultadoAmst)
+    document.getElementById("amostDesvioPadra2").innerHTML = raisAmost;
+  }
+}
+
+function calcDesvioSimples() {
+  var intervalo = document.getElementById("incluiIntervalo")
+  var totalDeFrequencia = 0
+  var totalXI = 0
+  if (!intervalo) {
+    for (var i = 0; i < frequenciaPricipal.length; i++) {
+      totalDeFrequencia += frequenciaPricipal[i]
+      totalXI += ((fimIntervaloPricipal[i] + parseFloat(inicioIntervaloPricipal[i])) / 2) * frequenciaPricipal[i] ;
+    }
+    var media = totalXI / totalDeFrequencia
+    var tempResult = 0
+    for (var i = 0; i < frequenciaPricipal.length; i++) {
+      var xi = (fimIntervaloPricipal[i] + parseFloat(inicioIntervaloPricipal[i])) / 2;
+      console.log(xi);
+      var modulo = (xi - media) * frequenciaPricipal[i]
+      if (modulo < 0) {
+        modulo = modulo * (-1)
+      }
+      tempResult += modulo
+    }
+  } else {
+    console.log(fimIntervaloPricipal);
+    for (var i = 0; i < frequenciaPricipal.length; i++) {
+      totalDeFrequencia += frequenciaPricipal[i]
+      totalXI += parseFloat(fimIntervaloPricipal[i]) * frequenciaPricipal[i] ;
+    }
+    var media = totalXI / totalDeFrequencia
+    var tempResult = 0
+    for (var i = 0; i < frequenciaPricipal.length; i++) {
+      var xi = parseFloat(fimIntervaloPricipal[i])
+      var modulo = (xi - media) * frequenciaPricipal[i]
+      if (modulo < 0) {
+        modulo = modulo * (-1)
+      }
+      tempResult += modulo
+    }
+  }
+
+  var resultado = tempResult / totalDeFrequencia
+  document.getElementById("desvioMedio2").innerHTML = resultado;
+}
+
+function calcModa() {
+  var intervalo = document.getElementById("incluiIntervalo")
+  var index = frequenciaPricipal.indexOf(Math.max.apply(null, frequenciaPricipal))
+  if (intervalo) {
+    var amplitude = (fimIntervaloPricipal[index] - inicioIntervaloPricipal[index])
+    var frequenciaDaClasse = frequenciaPricipal[index]
+    var limiteInferior = parseFloat(inicioIntervaloPricipal[index])
+    var freAnterior = 0
+    if (index > 0) {
+     freAnterior = frequenciaPricipal[index - 1]
+    }
+    var frePosterior = 0
+    if (index < frequenciaPricipal.length) {
+     frePosterior = frequenciaPricipal[index + 1]
+    }
+
+   var modulo = ((frequenciaDaClasse - freAnterior) / ((2 * frequenciaDaClasse) - (freAnterior + frePosterior)))
+   if (modulo < 0) {
+     modulo = modulo * - 1
+   }
+
+   var resultado = limiteInferior + (modulo * amplitude)
+  }
+
+  var resultado = fimIntervaloPricipal[index]
+
+ document.getElementById("moda2").innerHTML = resultado;
 }
 
 function destravaBotao() {
